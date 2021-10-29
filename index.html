@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+<body>
+    <title>Deff people</title>
+    <div class="language">
+        <button href="#" id="H-lang">Hindi</button>
+        <button href="#" id="E-lang">English</button>
+    </div>
+    <button onclick="recordVoice()">Speak</button>
+    <p id="captions">Your speech will be displayed here</p>
+    <script>
+        function recordVoice() {
+            let recorder = new webkitSpeechRecognition()
+            recorder.onresult = speechToText
+            recorder.start();
+        }
+        function speechToText(event) {
+            console.log(event)
+            let text = event.results[0][0].transcript 
+            document.getElementById("captions").innerHTML = text
+        }
+    </script>
+</body>
+
+</html>
